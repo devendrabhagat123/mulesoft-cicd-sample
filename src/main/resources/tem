@@ -1,3 +1,0 @@
-"Failed to invoke static Method 'createQR(java.lang.String,java.lang.String,java.lang.String,
-java.util.Map,int,int)' from Class 'myqr.GenmyQR'. 
-Expected arguments are [java.lang.String data, java.lang.String path, java.lang.String charset, java.util.Map<?, ?> hashMap, int height, int width] and invocation was attempted with arguments [java.lang.String data, java.lang.String path, java.lang.String charset, java.lang.String hashMap, java.lang.Integer height, java.lang.Integer width]: java.lang.IllegalArgumentException - argument type mismatch"
