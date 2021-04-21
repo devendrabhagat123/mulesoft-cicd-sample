@@ -43,7 +43,6 @@
             <objectStoreV2>true</objectStoreV2>
         </cloudHubDeployment>
     </configuration>
-
 				<configuration>
 				</configuration>
 			</plugin>
