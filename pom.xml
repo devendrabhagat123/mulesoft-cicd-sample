@@ -31,20 +31,7 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				 <configuration>
-        <cloudHubDeployment>
-            <uri>https://anypoint.mulesoft.com</uri>
-            <muleVersion>4.2.2</muleVersion>
-            <username>devendra_bhagat123</username>
-            <password>Dev@917$GM</password>
-            <applicationName>mulesoft-cicd-sample1</applicationName>
-            <environment>Sandbox</environment>
-            <workerType>MICRO</workerType>
-            <objectStoreV2>true</objectStoreV2>
-        </cloudHubDeployment>
-    </configuration>
-				<configuration>
-				</configuration>
+
 			</plugin>
 		<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -54,6 +41,16 @@
                     <compilerArgs>
                         <args>-parameters</args>
                     </compilerArgs>
+					   <cloudHubDeployment>
+            <uri>https://anypoint.mulesoft.com</uri>
+            <muleVersion>4.2.2</muleVersion>
+            <username>devendra_bhagat123</username>
+            <password>Dev@917$GM</password>
+            <applicationName>mulesoft-cicd-sample1</applicationName>
+            <environment>Sandbox</environment>
+            <workerType>MICRO</workerType>
+            <objectStoreV2>true</objectStoreV2>
+        </cloudHubDeployment>
                 </configuration>
             </plugin>
         <plugin>
