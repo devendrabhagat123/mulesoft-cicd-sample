@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<flow name="test1Flow" doc:id="f3bf0cc2-e73b-4220-b2d8-957285c2012e" >
 		<http:listener doc:name="GET /test" doc:id="4c50beae-ffab-423d-8b73-384dafcd40b3" config-ref="HTTP_Listener_config" path="/test" allowedMethods="GET"/>
-		<logger level="INFO" doc:name="Start" doc:id="a4afeb8e-dd7c-43bb-87bb-65683771a879" message="#[payload]"/>
+		<logger level="INFO" doc:name="Start" doc:id="a4afeb8e-dd7c-43bb-87bb-65683771a879" message='#["Started process"]'/>
 		<ee:transform doc:name="Transform Message" doc:id="43dedc76-215b-4f6c-869f-8c36486390c4" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
