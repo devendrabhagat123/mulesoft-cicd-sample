@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:java="http://www.mulesoft.org/schema/mule/java"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1a59f66b-6544-49cc-bd16-f3cd440e9c8d" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="1783979f-2811-4a7b-967a-364e035031f8" file="config.yaml" />
+	<flow name="GenQrCodeFlow" doc:id="1c0eeb09-e38f-4dc4-a897-873091d9f487" >
+		<http:listener doc:name="GET /GenQR/{getQRName}" doc:id="84ca5374-b132-4ce4-96a0-480fa4b70c7f" config-ref="HTTP_Listener_config" path="/GenQR/{getQRName}" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Start" doc:id="fd0d26e7-b14f-41b9-b289-c0102df14c55" message="#[attributes.uriParams.getQRName]"/>
+		<set-variable value="#[attributes.uriParams.getQRName]" doc:name="Get QR Name" doc:id="787a78ea-eb0c-4164-ba34-85bcfdf7260d" variableName="QRName"/>
+		<java:invoke-static doc:name="Invoke static" doc:id="8715a783-2ae5-4bbb-8686-bbf8c2a20e5f" class="myqr.NewQRCodeMule1" method="createUpiQrCode(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+			<java:args ><![CDATA[#[%dw 2.0
+output application/json
+---
+{
+	
+	payeeAddress: "9179922334@upi",
+	payeeName: "Devendra Bhagat",
+    trxNo: null,
+    amount: null,
+	purpose: null,
+	trxRef: null,
+	path: vars.QRName
+}]]]></java:args>
+		</java:invoke-static>
+		<ee:transform doc:name="Transform Message" doc:id="bec37c5b-3959-4542-85a7-b4ee979918f9" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message : ": payload
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End" doc:id="807e9cb9-90be-454d-80fe-cd5f01d801af" message="#[payload]"/>
+	</flow>
+</mule>

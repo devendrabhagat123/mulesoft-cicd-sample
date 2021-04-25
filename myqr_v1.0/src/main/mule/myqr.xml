@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:java="http://www.mulesoft.org/schema/mule/java"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="myqrFlow" doc:id="4c2535d3-095f-4030-a9b6-1f610c0d81af" initialState="stopped">
+		<scheduler doc:name="Scheduler" doc:id="d03df623-b9e8-4d7a-a520-9bbf4af94375" >
+			<scheduling-strategy >
+				<fixed-frequency timeUnit="MINUTES" frequency="1"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="6de7df13-d855-4670-9cf2-8d3407154c92" message="Started"/>
+		<java:invoke-static doc:name="Invoke static" doc:id="c4154dca-5497-4f74-8575-4e5e5e876791" class="myqr.myqr1" method="createQR(java.lang.String,java.lang.String,java.lang.String,java.util.Map,int,int)">
+			<java:args><![CDATA[#[%dw 2.0
+output application/json
+---
+{
+	
+	data: "9179922334@upi",
+	path: "D:\Files\DevBhagat.png",
+    charset: "UTF-8",
+    hashMap: {},
+	height: 200,
+	width: 200
+
+}]]]></java:args>
+		</java:invoke-static>
+		<logger level="INFO" doc:name="Logger" doc:id="03d41028-7a9f-461e-be6c-ed73116c76f6" message="Output : #[payload]"/>
+	</flow>
+</mule>
