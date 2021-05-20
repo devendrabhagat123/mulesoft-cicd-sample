@@ -33,7 +33,7 @@
 						<username>devendra_bhagat_MCIA</username>
 						<password>Dev@917$GM</password>
 						<applicationName>mulesoft-cicd-sample1</applicationName>
-						<DeploymentTarget>node1</DeploymentTarget>
+						<deploymentTarget>node1</deploymentTarget>
 						<environment>Sandbox</environment>
 						<workerType>MICRO</workerType>
 						<objectStoreV2>true</objectStoreV2>
