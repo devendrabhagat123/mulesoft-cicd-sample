@@ -31,7 +31,7 @@
 				<configuration>
 					<standaloneDeployment>
 				         <muleVersion>4.3.0</muleVersion>
-   	    				 <muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome>        
+   	    				 <muleHome>C://mule-enterprise-standalone-4.3.0</muleHome>        
     				</standaloneDeployment>
 				</configuration>
 			</plugin>
