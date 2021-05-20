@@ -7,13 +7,11 @@
     <packaging>mule-application</packaging>
 	<name>cicd-sample1</name>
 
-	
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.3.0-20210322</app.runtime>
 		<mule.maven.plugin.version>3.4.2</mule.maven.plugin.version>
-		<mule.tools.version>1.7</mule.tools.version>
     </properties>
 
 	<build>
@@ -29,10 +27,16 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<standaloneDeployment>
-				         <muleVersion>4.3.0</muleVersion>
-   	    				 <muleHome>C://mule-enterprise-standalone-4.3.0</muleHome>        
-    				</standaloneDeployment>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.3.0</muleVersion>
+						<username>devendra_bhagat_MCIA</username>
+						<password>Dev@917$GM</password>
+						<applicationName>mulesoft-cicd-sample1</applicationName>
+						<environment>Sandbox</environment>
+						<workerType>MICRO</workerType>
+						<objectStoreV2>true</objectStoreV2>
+ 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
