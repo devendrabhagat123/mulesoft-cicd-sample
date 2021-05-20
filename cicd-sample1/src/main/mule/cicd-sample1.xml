@@ -6,7 +6,7 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<flow name="cicd-sample1Flow" doc:id="8d3104ea-c792-4fe9-8c51-ee02ce159f51" >
 		<http:listener doc:name="GET /cicd" doc:id="f5f947cb-e430-4d38-b1e7-8d19dbd99432" config-ref="HTTP_Listener_config" path="/cicd" allowedMethods="GET"/>
-		<logger level="INFO" doc:name="Start Log" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" />
+		<logger level="INFO" doc:name="Start Log" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" message='"Start Process"'/>
 		<set-payload value='#["CI/CD"]' doc:name="Set Payload" doc:id="28dfa9c6-7b82-416a-b95b-734bc54a436f" />
 		<logger level="INFO" doc:name="End Log" doc:id="faf64add-77e3-45c4-ba21-8b0f5ed89e4d" message="#[payload]"/>
 	</flow>
