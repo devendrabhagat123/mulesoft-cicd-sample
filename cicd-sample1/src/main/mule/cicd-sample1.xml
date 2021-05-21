@@ -9,5 +9,10 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<logger level="INFO" doc:name="Start Log" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" message='#["Start Process"]'/>
 		<set-payload value='#["CI/CD"]' doc:name="Set Payload" doc:id="28dfa9c6-7b82-416a-b95b-734bc54a436f" />
 		<logger level="INFO" doc:name="End Log" doc:id="faf64add-77e3-45c4-ba21-8b0f5ed89e4d" message='#["End Process"]'/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="135db9a3-c464-4043-a87e-5c837912a57a" >
+				<set-payload value='#["Error in mail flow"]' doc:name="Set Payload" doc:id="788bda58-68d3-4033-9fb4-4a615a0c8a4d" />
+			</on-error-propagate>
+		</error-handler>
 	</flow>
 </mule>
