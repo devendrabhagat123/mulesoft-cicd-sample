@@ -21,7 +21,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 		<os:retrieve doc:name="Retrieve" doc:id="54941541-7645-4e3b-aa24-50738e60c52a" key="#[vars.key]" objectStore="MCIA_Object_store">
 			<os:default-value ><![CDATA[#[vars.value]]]></os:default-value>
 		</os:retrieve>
-		<set-payload value='#["CI/CD"]' doc:name="Set Payload" doc:id="28dfa9c6-7b82-416a-b95b-734bc54a436f" />
+		<set-payload value='#[payload]' doc:name="Set Payload" doc:id="28dfa9c6-7b82-416a-b95b-734bc54a436f" />
 		<logger level="INFO" doc:name="End Log" doc:id="faf64add-77e3-45c4-ba21-8b0f5ed89e4d" message='#["End Process"]'/>
 		<error-handler >
 			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="135db9a3-c464-4043-a87e-5c837912a57a" >
