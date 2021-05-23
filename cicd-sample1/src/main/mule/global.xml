@@ -6,4 +6,8 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
 	<os:object-store name="MCIA_Object_store" doc:name="Object store" doc:id="d7564298-aceb-49b8-9469-f9103afae2ed" />
+	<configuration-properties doc:name="Configuration properties" doc:id="cbee98c2-90ba-4f19-9a6f-040d2b77880a" file="config.yaml" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2959ac08-ff6b-4943-ba5b-889f88fe0034" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
 </mule>
