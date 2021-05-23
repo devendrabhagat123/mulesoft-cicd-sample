@@ -26,7 +26,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 		<error-handler >
 			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="135db9a3-c464-4043-a87e-5c837912a57a" >
 				<set-payload value='#["Error in mail flow"]' doc:name="Set Payload" doc:id="788bda58-68d3-4033-9fb4-4a615a0c8a4d" />
-				<logger level="INFO" doc:name="Logger" doc:id="f1908cb3-7b44-4de8-87ea-0e2252d739df" message="#[payload]"/>
+				<logger level="INFO" doc:name="Error Logger" doc:id="f1908cb3-7b44-4de8-87ea-0e2252d739df" message="#[payload]"/>
 			</on-error-propagate>
 		</error-handler>
 	</flow>
