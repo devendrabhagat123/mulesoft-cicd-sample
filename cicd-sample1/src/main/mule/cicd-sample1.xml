@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
 	<flow name="cicd-sample1Flow" doc:id="8d3104ea-c792-4fe9-8c51-ee02ce159f51" >
 		<http:listener doc:name="GET /cicd" doc:id="f5f947cb-e430-4d38-b1e7-8d19dbd99432" path="/cicd" allowedMethods="GET" config-ref="HTTP_Listener_config"/>
-		<logger level="INFO" doc:name="Start Log" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" message='#["Start Process"]'/>
+		<logger level="INFO" doc:name="Start Log1" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" message='#["Start Process"]'/>
 		<set-variable value="#[attributes.queryParams.key]" doc:name="Set Variable Key" doc:id="eb5ac41f-e573-4260-9da3-5a68c81df432" variableName="key"/>
 		<set-variable value="#[attributes.queryParams.values]" doc:name="Set Variable Value" doc:id="c12fdbed-fad0-4126-8f22-56a43f7894fd" variableName="value"/>
 		<os:store doc:name="key value store to OS" doc:id="b432cbc2-f90e-4297-92e8-a5976919b4b0" key="#[vars.key]" objectStore="MCIA_Object_store">
