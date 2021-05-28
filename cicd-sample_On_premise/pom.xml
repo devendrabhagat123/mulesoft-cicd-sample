@@ -27,16 +27,10 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.3.0</muleVersion>
-						<username>devendra_bhagat_MCIA</username>
-						<password>Dev@917$GM</password>
-						<applicationName>mulesoft-cicd-sample1</applicationName>
-						<environment>Sandbox</environment>
-						<workerType>MICRO</workerType>
-						<objectStoreV2>true</objectStoreV2>
-					</cloudHubDeployment>
+					<standaloneDeployment>
+      					<muleHome>${mule.home.test}</muleHome>
+     					<muleVersion>${app.runtime}</muleVersion>
+    				</standaloneDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
