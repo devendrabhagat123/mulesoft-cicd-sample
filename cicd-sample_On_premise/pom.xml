@@ -28,7 +28,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<standaloneDeployment>
-      					<muleHome>${mule.home.test}</muleHome>
+      					<muleHome>${mule.home}</muleHome>
      					<muleVersion>${app.runtime}</muleVersion>
     				</standaloneDeployment>
 				</configuration>
