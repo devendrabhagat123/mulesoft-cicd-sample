@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<flow name="cicd-sample1Flow" doc:id="8d3104ea-c792-4fe9-8c51-ee02ce159f51" >
+		<http:listener doc:name="GET /cicd" doc:id="f5f947cb-e430-4d38-b1e7-8d19dbd99432" path="/cicd" allowedMethods="GET" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Start Log" doc:id="da614863-b03d-4dc1-b426-0211cacb1c12" message='#["Start Process in mule4"]'/>
+		<set-variable value="#[attributes.queryParams.key]" doc:name="Set Variable Key" doc:id="eb5ac41f-e573-4260-9da3-5a68c81df432" variableName="key"/>
+		<set-variable value="#[attributes.queryParams.values]" doc:name="Set Variable Value" doc:id="c12fdbed-fad0-4126-8f22-56a43f7894fd" variableName="value"/>
+		<os:store doc:name="key value store to OS" doc:id="b432cbc2-f90e-4297-92e8-a5976919b4b0" key="#[vars.key]" objectStore="MCIA_Object_store">
+			<os:value ><![CDATA[#[vars.value]]]></os:value>
+		</os:store>
+		<set-variable value="1234" doc:name="Set Order-ID" doc:id="c5329ae9-b1f2-4622-8d48-6c839fc5f8a2" variableName="orderId"/>
+		<tracking:custom-event doc:name="Custom Business Event" doc:id="3097fefc-9375-41b0-839b-c0b2e6626600" event-name="order-id">
+			<tracking:meta-data key="order-id" value="#[vars.orderId]" />
+		</tracking:custom-event>
+		<os:retrieve doc:name="Retrieve" doc:id="54941541-7645-4e3b-aa24-50738e60c52a" key="#[vars.key]" objectStore="MCIA_Object_store">
+			<os:default-value ><![CDATA[#[vars.value]]]></os:default-value>
+		</os:retrieve>
+		<logger level="INFO" doc:name="Logger" doc:id="ae080990-b61a-49ac-b036-7391a0aaa4cd" />
+		<set-payload value='#[payload]' doc:name="Set Payload" doc:id="28dfa9c6-7b82-416a-b95b-734bc54a436f" />
+		<logger level="INFO" doc:name="End Log" doc:id="faf64add-77e3-45c4-ba21-8b0f5ed89e4d" message='#["End Process"]'/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="135db9a3-c464-4043-a87e-5c837912a57a" >
+				<set-payload value='#["Error in mail flow"]' doc:name="Set Payload" doc:id="788bda58-68d3-4033-9fb4-4a615a0c8a4d" />
+				<logger level="INFO" doc:name="Error Logger" doc:id="f1908cb3-7b44-4de8-87ea-0e2252d739df" message="#[payload]"/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>
