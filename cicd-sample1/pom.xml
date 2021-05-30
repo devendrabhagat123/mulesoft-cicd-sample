@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
-	<artifactId>cicd-sample1</artifactId>
+	<artifactId>cicd-sample2</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 	<name>cicd-sample1</name>
@@ -32,7 +32,7 @@
 						<muleVersion>4.3.0</muleVersion>
 						<username>tupesh98</username>
 						<password>Tupesh@459</password>
-						<applicationName>mulesoft-cicd-sample1</applicationName>
+						<applicationName>mulesoft-cicd-sample2</applicationName>
 						<environment>Sandbox</environment>
 						<workerType>MICRO</workerType>
 						<objectStoreV2>true</objectStoreV2>
