@@ -5,7 +5,7 @@
 	<artifactId>cicd-sample2</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-	<name>cicd-sample1</name>
+	<name>cicd-sample1_July</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,7 +30,7 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.3.0</muleVersion>
-						<username>devendrabhagat_MCIA</username>
+						<username>devendrabhagat_MCIA_July</username>
 						<password>Dev@917$GM</password>
 						<applicationName>mulesoft-cicd-sample3</applicationName>
 						<environment>Sandbox</environment>
